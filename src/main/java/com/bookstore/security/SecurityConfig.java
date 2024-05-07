@@ -18,7 +18,6 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() throws Exception {
-        // ensure the passwords are encoded properly
         User.UserBuilder users = User.withDefaultPasswordEncoder();
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(users.username("user").password("password").roles("USER").build());

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,15 @@ import java.util.List;
 @NoArgsConstructor
 public class Author {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "student_sequence",
+            sequenceName = "student_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
     private Long id;
     private String name;
     private String surname;
@@ -22,8 +31,8 @@ public class Author {
     @OneToMany
     private List<Book> books;
 
-    public Author(List<Book> books, String password, String surname, String name) {
-        this.books = books;
+    public Author(String password, String surname, String name) {
+        this.books = new ArrayList<>();
         this.password = password;
         this.surname = surname;
         this.name = name;

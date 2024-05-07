@@ -20,17 +20,22 @@ public class UserController {
     }
 
     @GetMapping("/AllAuthors")
-    public List<Author> GetAllAuthors(){
-        return userService.GetAllAuthors();
+    public List<Author> getAllAuthors(){
+        return userService.getAllAuthors();
     }
 
     @GetMapping("/AllBooks")
-    public List<Book> GetAllBooks(){
-        return userService.GetAllBooks();
+    public List<Book> getAllBooks(){
+        return userService.getAllBooks();
     }
 
     @GetMapping("/BookByAuthor/{id}")
-    public List<Book> GetBooksByAuthor(@PathVariable("id") Long id){
-        return userService.GetBooksByAuthor(id);
+    public List<Book> getBooksByAuthor(@PathVariable("id") Long id){
+        return userService.getBooksByAuthor(id);
+    }
+
+    @GetMapping("/BookById/{id}")
+    public Book getBookById(@PathVariable("id") Long id){
+        return userService.getBookById(id);
     }
 }
